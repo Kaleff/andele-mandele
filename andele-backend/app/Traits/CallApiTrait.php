@@ -35,7 +35,6 @@ trait CallApiTrait {
             }
         }
         curl_close($curl);
-        dd($results);
         return $results;
     }
 }
