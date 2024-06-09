@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create($this->tablename, function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->index('character_id');
             $table->index('episode_id');
             $table->foreignId('character_id')->references('id')->on('characters')->onDelete('cascade');

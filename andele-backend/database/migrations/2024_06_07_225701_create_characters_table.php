@@ -24,8 +24,8 @@ return new class extends Migration
             $table->index('origin_id');
             $table->index('location_id');
 
-            $table->foreignId('origin_id')->references('id')->on('locations')->nullable();
-            $table->foreignId('location_id')->references('id')->on('locations');
+            $table->foreignId('origin_id')->nullable()->references('id')->on('locations');
+            $table->foreignId('location_id')->nullable()->references('id')->on('locations');
         });
     }
 
