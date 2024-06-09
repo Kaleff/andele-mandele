@@ -11,14 +11,6 @@ class EpisodeController extends Controller
 {
     use CallApiTrait;
 
-    public function index(): JsonResponse 
-    {
-        $data = $this->callApi('episode');
-        return response()->json(
-            $data
-        );
-    }
-
     public function store(): String 
     {
         $episodes = $this->callApi('episode');
@@ -30,6 +22,6 @@ class EpisodeController extends Controller
                 ]
             );
         }
-        return 'Successfully seeded the Episode table';
+        return 'Successfully seeded the Episodes table';
     }
 }
