@@ -11,6 +11,12 @@ class LocationController extends Controller
 {
     use CallApiTrait;
 
+    public function index(Int $page): JsonResponse
+    {
+        $locations = Location::skip(10 * ($page - 1))->take(10)->get();
+        return response()->json($locations);
+    }
+
     public function store(): String
     {
         $locations = $this->callApi('location');
