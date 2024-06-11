@@ -9,7 +9,6 @@ function App() {
         <div className="container px-lg-5 topLinks">
           <Link to={'episodes'}>Episodes</Link> 
           <Link to={'characters'}>Characters</Link>
-          <Link to={'locations'}>Locations</Link>
         </div>
       </nav>
       <Outlet />

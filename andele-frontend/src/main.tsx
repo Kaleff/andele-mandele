@@ -6,6 +6,9 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import ErrorPage from './components/error-page.tsx';
 import Homepage from './components/homepage.tsx';
 import Episodes from './components/episodes.tsx';
+import Episode from './components/episode.tsx';
+import Characters from './components/characters.tsx';
+import Character from './components/character.tsx';
 
 const router = createBrowserRouter([
   {
@@ -19,11 +22,19 @@ const router = createBrowserRouter([
       },
       {
         path: "episodes",
-        element: <Episodes />
+        element: <Episodes />,
       },
       {
         path: "episode/:id",
-        element: <></>
+        element: <Episode />
+      },
+      {
+        path: "characters",
+        element: <Characters />
+      },
+      {
+        path: "character/:id",
+        element: <Character />
       }
     ]
   }

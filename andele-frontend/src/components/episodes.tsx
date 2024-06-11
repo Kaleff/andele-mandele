@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
-import { getEpisode } from "../network/network";
+import { getEpisodes } from "../network/network";
 import { EpisodeType } from "../types/types";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { Link } from "react-router-dom";
+import { BarLoader } from "react-spinners";
 
 export default function Episodes() {
-  const [episodes, setEpisodes] = useState([]);
+  const [episodes, setEpisodes] = useState<EpisodeType[]>([]);
   const [hasMore, setHasMore] = useState(true);
   const [index, setIndex] = useState(1);
 
   function getEpisodesData() {
-    getEpisode(index)
+    getEpisodes(index)
       .then((response) => {
-        console.log(response.data);
         setEpisodes(episodes.concat(response.data));
         response.data.length > 0 ? setHasMore(true) : setHasMore(false);
       })
@@ -26,16 +27,14 @@ export default function Episodes() {
   }, []);
 
   const episodeList = episodes.map((episode: EpisodeType) => (
-    <div className="col-lg-6 mb-5">
+    <div className="col-lg-6 mb-5" key={episode.id}>
       <div className="card bg-light border-0 h-100">
         <div className="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
           <div className="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">
             <i className="bi bi-collection"></i>
           </div>
           <h2 className="fs-4 fw-bold">{episode.name}</h2>
-          <p className="mb-0">
-            {episode.episode}
-          </p>
+          <Link to={`/episode/${episode.id}`} relative="path">{episode.episode}</Link>
           <p className="mb-0">
             {episode.air_date}
           </p>
@@ -49,7 +48,10 @@ export default function Episodes() {
       dataLength={episodeList.length}
       hasMore={hasMore}
       next={getEpisodesData}
-      loader={<></>}
+      loader={<BarLoader
+        loading={true}
+        color="#3378A7"
+      />}
     >
       {episodes && (
         <div className="container px-lg-5 pt-5">
