@@ -72,6 +72,16 @@ button:focus-visible {
   gap: 20%;
 }
 
+.imgHolder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imgHolder img {
+  max-width: 200px;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
