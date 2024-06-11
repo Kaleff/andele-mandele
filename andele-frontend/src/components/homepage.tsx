@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function Homepage() {
   return (
     <header className="py-5">
