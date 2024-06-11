@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getEpisode } from "../network/network";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { CharacterType, EpisodeType } from "../types/types";
 import { BarLoader } from "react-spinners";
 
@@ -35,7 +35,7 @@ export default function Episode() {
           <div className="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">
             <i className="bi bi-collection"></i>
           </div>
-          <h2 className="fs-4 fw-bold">{character.name}</h2>
+          <h2 className="fs-4 fw-bold"><Link to={`/character/${character.id}`}>{character.name}</Link></h2>
           <p>
             {character.status} - {character.species}
           </p>
