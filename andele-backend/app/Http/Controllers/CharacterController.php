@@ -11,6 +11,27 @@ class CharacterController extends Controller
 {
     use CallApiTrait;
 
+    public function index(Int $page): JsonResponse
+    {
+        $characters = Character::skip(10 * ($page - 1))->take(10)->get();
+        return response()->json($characters);
+    }
+
+    public function show(Int $id): JsonResponse
+    {
+        $character = Character::find($id);
+        $episodes = $character->episodes()->get();
+        $origin = $character->origin()->get();
+        $location = $character->origin()->get();
+
+        return response()->json([
+            'character' => $character, 
+            'episodes' => $episodes, 
+            'origin' => $origin, 
+            'location' => $location
+        ]);
+    }
+
     public function Store(): String
     {
         $characters = $this->callApi('character');
