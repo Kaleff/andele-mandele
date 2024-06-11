@@ -21,8 +21,8 @@ class CharacterController extends Controller
     {
         $character = Character::find($id);
         $episodes = $character->episodes()->get();
-        $origin = $character->origin()->get();
-        $location = $character->origin()->get();
+        $origin = $character->origin()->first();
+        $location = $character->location()->first();
 
         return response()->json([
             'character' => $character, 
